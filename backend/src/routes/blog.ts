@@ -15,19 +15,7 @@ export const blogRouter = new Hono<{
 
 //below is a middleware to check if the user is authenticated 
 blogRouter.use('/*', async (c, next) => {//assuming no Bearer used as first word before token
-	// const jwt = c.req.header('Authorization');
-	// if (!jwt) {
-	// 	c.status(401);
-	// 	return c.json({ error: "unauthorized" });
-	// }
-	// const token = jwt.split(' ')[1];
-	// const payload = await verify(token, c.env.JWT_SECRET);
-	// if (!payload) {
-	// 	c.status(401);
-	// 	return c.json({ error: "unauthorized" });
-	// }
-	// c.set('jwtPayload', payload);
-	// await next()
+	
     const authHeader= c.req.header("Authorization") || "";
     try{
         const user = await verify(authHeader,c.env.JWT_SECRET)
