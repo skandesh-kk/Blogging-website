@@ -14,13 +14,19 @@ export const Blogs =()=>{
         <Appbar />
         <div className="flex justify-center">
         
-        <div className=" max-w-xl">
-            <BlogCard
-                authorName={"Skandesh K K"}
-                title={"Running makes you feel rejuvenated"}
-                content={"Running is a popular form of exercise for a reason. It doesn’t need much equipment, and you can do it just about anywhere or anytime it is convenient for you. Plus, experts say it improves heart health. ‌"}
+        <div className=" ">
+            {blogs.map(blog =>{
+                return(
+                <BlogCard
+                id={blog.id}
+                authorName={blog.author?.name || "Anonymous"}
+                title={blog.title}
+                content={blog.content}
                 publishedDate={"2nd Feb 2024"}
             />
+            );
+            })}
+            
             
         </div>
         
