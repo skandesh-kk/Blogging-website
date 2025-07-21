@@ -16,9 +16,9 @@ export const Auth =({type}: {type: "signin" |"signup"}) =>{
     async function sendRequest(){
         try{
         const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`,postInputs)//get back jwt and send your body i.e. inputs - name doesnt matter if send here - backend ignores it
-        const jwt=response.data;
+        const jwt=response.data.jwt;
         localStorage.setItem("token",jwt);
-        navigate("/blog");//navigate to blog page once got baack jwt
+        navigate("/blogs");//navigate to blog page once got baack jwt
         }
         catch(e){
             // console.log(e);//or alert the user
