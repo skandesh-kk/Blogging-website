@@ -4,6 +4,8 @@ import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
 import { userRouter } from './routes/user'
 import { blogRouter } from './routes/blog'
+import { cors } from 'hono/cors'
+
 const app = new Hono<{//way to specify environment var
 	Bindings: {
 		DATABASE_URL: string,
@@ -13,6 +15,7 @@ const app = new Hono<{//way to specify environment var
 //and cant get env var outside
 //so everytime in req we can access it like this by client
 
+app.use('/*',cors())
 app.route('/api/v1/user', userRouter);
 app.route('/api/v1/blog', blogRouter);
 
