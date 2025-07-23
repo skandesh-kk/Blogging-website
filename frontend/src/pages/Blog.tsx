@@ -9,7 +9,7 @@ export const Blog = () =>{
         id: id||""
     });
     console.log("loaded blog is ",blog)
-    if(loading){
+    if(loading || !blog){
         return <div>
             <Appbar /> 
             <div  className="flex justify-center">
