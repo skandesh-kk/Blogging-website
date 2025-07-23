@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useBlog } from "../hooks"
 import { FullBlog } from "../components/FullBlog";
+import { Appbar } from "../components/AppBar";
+import { BlogSkeleton } from "../components/BlogSkeleton";
 export const Blog = () =>{ 
     const {id}=useParams();
     const {loading,blog}= useBlog({
@@ -8,7 +10,18 @@ export const Blog = () =>{
     });
     console.log("loaded blog is ",blog)
     if(loading){
-        return <div>Loading...</div>
+        return <div>
+            <Appbar /> 
+            <div  className="flex justify-center">
+                <div>
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                </div>
+            </div>
+        </div>
     }
 
     return <div>
